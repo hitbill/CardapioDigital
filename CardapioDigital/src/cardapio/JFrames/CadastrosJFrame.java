@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import cardapio.Item;
 import cardapio.Sabor;
+import cardapio.Sorvete;
 
 /**
  *
@@ -28,6 +29,7 @@ public class CadastrosJFrame extends javax.swing.JFrame {
     ArrayList<Item> ListaItensTamanhoUnico = new ArrayList();
     ArrayList<Item> ListaTipoSorvete = new ArrayList();
     ArrayList<Sabor> ListaTodosSabores = new ArrayList();
+    ArrayList<Sorvete> ListaNovosSorvetes = new ArrayList();
     
     public CadastrosJFrame() {
         initComponents();
@@ -35,6 +37,7 @@ public class CadastrosJFrame extends javax.swing.JFrame {
         jInternalRelatorios.setVisible(false);
         jInternalFrameCadastrarNovoSabor.setVisible(false);
         jInternalFrameCadastrarTipoSorvetes.setVisible(false);
+        jInternalFrameCadastrarNovoSorvete.setVisible(false);
     }
 
     /**
@@ -50,10 +53,10 @@ public class CadastrosJFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton_Relatorio_OK = new javax.swing.JButton();
-        jInternalFrameCadastrarTipoSorvetes1 = new javax.swing.JInternalFrame();
-        jButtonTipoSorveteCadastroListar1 = new javax.swing.JButton();
-        jButton_Cadastar_Sorvete_Salvar1 = new javax.swing.JButton();
-        jButton_Cadastar_TipoSorvete_Cancelar1 = new javax.swing.JButton();
+        jInternalFrameCadastrarNovoSorvete = new javax.swing.JInternalFrame();
+        jButtonNovoSorveteCadastroListar = new javax.swing.JButton();
+        jButton_Cadastar_NovoSorvete_Salvar = new javax.swing.JButton();
+        jButton_Cadastar_NovoSorvete_Cancelar = new javax.swing.JButton();
         jLabel_Nome_Do_Produto9 = new javax.swing.JLabel();
         jLabel_Nome_Do_Produto11 = new javax.swing.JLabel();
         jComboBoxTodosSabores = new javax.swing.JComboBox();
@@ -132,36 +135,36 @@ public class CadastrosJFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton_Relatorio_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         getContentPane().add(jInternalRelatorios);
         jInternalRelatorios.setBounds(110, 30, 370, 440);
 
-        jInternalFrameCadastrarTipoSorvetes1.setTitle("Cadastrar Novo Sorvete");
-        jInternalFrameCadastrarTipoSorvetes1.setPreferredSize(new java.awt.Dimension(489, 250));
-        jInternalFrameCadastrarTipoSorvetes1.setVisible(false);
+        jInternalFrameCadastrarNovoSorvete.setTitle("Cadastrar Novo Sorvete");
+        jInternalFrameCadastrarNovoSorvete.setPreferredSize(new java.awt.Dimension(489, 250));
+        jInternalFrameCadastrarNovoSorvete.setVisible(false);
 
-        jButtonTipoSorveteCadastroListar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardapio/btn_ListIcon.png"))); // NOI18N
-        jButtonTipoSorveteCadastroListar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNovoSorveteCadastroListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardapio/btn_ListIcon.png"))); // NOI18N
+        jButtonNovoSorveteCadastroListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTipoSorveteCadastroListar1ActionPerformed(evt);
+                jButtonNovoSorveteCadastroListarActionPerformed(evt);
             }
         });
 
-        jButton_Cadastar_Sorvete_Salvar1.setBackground(new java.awt.Color(200, 255, 200));
-        jButton_Cadastar_Sorvete_Salvar1.setText("Cadastrar");
-        jButton_Cadastar_Sorvete_Salvar1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Cadastar_NovoSorvete_Salvar.setBackground(new java.awt.Color(200, 255, 200));
+        jButton_Cadastar_NovoSorvete_Salvar.setText("Cadastrar");
+        jButton_Cadastar_NovoSorvete_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Cadastar_Sorvete_Salvar1ActionPerformed(evt);
+                jButton_Cadastar_NovoSorvete_SalvarActionPerformed(evt);
             }
         });
 
-        jButton_Cadastar_TipoSorvete_Cancelar1.setBackground(new java.awt.Color(255, 200, 200));
-        jButton_Cadastar_TipoSorvete_Cancelar1.setText("Cancelar");
-        jButton_Cadastar_TipoSorvete_Cancelar1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Cadastar_NovoSorvete_Cancelar.setBackground(new java.awt.Color(255, 200, 200));
+        jButton_Cadastar_NovoSorvete_Cancelar.setText("Cancelar");
+        jButton_Cadastar_NovoSorvete_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Cadastar_TipoSorvete_Cancelar1ActionPerformed(evt);
+                jButton_Cadastar_NovoSorvete_CancelarActionPerformed(evt);
             }
         });
 
@@ -169,62 +172,65 @@ public class CadastrosJFrame extends javax.swing.JFrame {
 
         jLabel_Nome_Do_Produto11.setText("Sabor:");
 
-        jComboBoxTodosSabores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxTodosSabores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxTodosSaboresActionPerformed(evt);
+            }
+        });
 
-        jComboBoxTodosTipoSorvete.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxTodosTipoSorvete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxTodosTipoSorveteActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jInternalFrameCadastrarTipoSorvetes1Layout = new javax.swing.GroupLayout(jInternalFrameCadastrarTipoSorvetes1.getContentPane());
-        jInternalFrameCadastrarTipoSorvetes1.getContentPane().setLayout(jInternalFrameCadastrarTipoSorvetes1Layout);
-        jInternalFrameCadastrarTipoSorvetes1Layout.setHorizontalGroup(
-            jInternalFrameCadastrarTipoSorvetes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createSequentialGroup()
-                .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jInternalFrameCadastrarNovoSorveteLayout = new javax.swing.GroupLayout(jInternalFrameCadastrarNovoSorvete.getContentPane());
+        jInternalFrameCadastrarNovoSorvete.getContentPane().setLayout(jInternalFrameCadastrarNovoSorveteLayout);
+        jInternalFrameCadastrarNovoSorveteLayout.setHorizontalGroup(
+            jInternalFrameCadastrarNovoSorveteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createSequentialGroup()
+                .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createSequentialGroup()
                         .addGap(138, 138, 138)
-                        .addComponent(jButton_Cadastar_TipoSorvete_Cancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createSequentialGroup()
+                        .addComponent(jButton_Cadastar_NovoSorvete_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel_Nome_Do_Produto9)
                             .addComponent(jLabel_Nome_Do_Produto11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxTodosSabores, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxTodosTipoSorvete, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createSequentialGroup()
+                    .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createSequentialGroup()
                         .addGap(278, 278, 278)
-                        .addComponent(jButton_Cadastar_Sorvete_Salvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton_Cadastar_NovoSorvete_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonTipoSorveteCadastroListar1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonNovoSorveteCadastroListar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
-        jInternalFrameCadastrarTipoSorvetes1Layout.setVerticalGroup(
-            jInternalFrameCadastrarTipoSorvetes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameCadastrarTipoSorvetes1Layout.createSequentialGroup()
+        jInternalFrameCadastrarNovoSorveteLayout.setVerticalGroup(
+            jInternalFrameCadastrarNovoSorveteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameCadastrarNovoSorveteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createSequentialGroup()
-                        .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonTipoSorveteCadastroListar1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createSequentialGroup()
+                        .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonNovoSorveteCadastroListar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxTodosTipoSorvete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_Nome_Do_Produto9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBoxTodosSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel_Nome_Do_Produto11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(jInternalFrameCadastrarTipoSorvetes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Cadastar_Sorvete_Salvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Cadastar_TipoSorvete_Cancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jInternalFrameCadastrarNovoSorveteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_Cadastar_NovoSorvete_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Cadastar_NovoSorvete_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
-        getContentPane().add(jInternalFrameCadastrarTipoSorvetes1);
-        jInternalFrameCadastrarTipoSorvetes1.setBounds(110, 70, 489, 250);
+        getContentPane().add(jInternalFrameCadastrarNovoSorvete);
+        jInternalFrameCadastrarNovoSorvete.setBounds(110, 70, 489, 250);
 
         jInternalFrameCadastrarTipoSorvetes.setTitle("Cadastrar Novo Tipo de Sorvete");
         jInternalFrameCadastrarTipoSorvetes.setPreferredSize(new java.awt.Dimension(489, 250));
@@ -549,6 +555,11 @@ public class CadastrosJFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItemTipoSorvete);
 
         jMenuItemSorvete.setText("Novo Sorvete");
+        jMenuItemSorvete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSorveteActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemSorvete);
 
         jMenuCadastrar.add(jMenu1);
@@ -660,6 +671,8 @@ public class CadastrosJFrame extends javax.swing.JFrame {
         Sabor item = new Sabor(jText_Cadastar_Sabor.getText());
         ListaTodosSabores.add(item);
         jText_Cadastar_Sabor.setText(null);
+        
+        jComboBoxTodosSabores.addItem(item.GetSaborName());
         //CADASTRAR SABOR
     }//GEN-LAST:event_jButton_Cadastar_Sabor_SalvarActionPerformed
 
@@ -692,16 +705,20 @@ public class CadastrosJFrame extends javax.swing.JFrame {
         if(!jText_Cadastar_Sorvete_Tamanho_Name.getText().equals("")){
             Item item = new Item(jText_Cadastar_Sorvete_Name.getText(),jText_Cadastar_Sorvete_Tamanho_Name.getText(),Float.parseFloat(jText_Cadastar_Sorvete_Preco.getText()));
             ListaTipoSorvete.add(item);
+            jComboBoxTodosTipoSorvete.addItem(item.getItemName());
         }
         else{
              Item item = new Item(jText_Cadastar_Sorvete_Name.getText(),Float.parseFloat(jText_Cadastar_Sorvete_Preco.getText()));
              ListaTipoSorvete.add(item);
+             jComboBoxTodosTipoSorvete.addItem(item.getItemName());
         }
         
         jText_Cadastar_Sorvete_Name.setText(null);
         jText_Cadastar_Sorvete_Tamanho_Name.setText(null);
         jText_Cadastar_Sorvete_Preco.setText(null);
-        //CADASTRAR SORVETE
+        
+        
+        //CADASTRAR TIPO SORVETE
     }//GEN-LAST:event_jButton_Cadastar_Sorvete_SalvarActionPerformed
 
     private void jButton_Cadastar_TipoSorvete_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Cadastar_TipoSorvete_CancelarActionPerformed
@@ -725,21 +742,46 @@ public class CadastrosJFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jText_Cadastar_Sorvete_Tamanho_NameActionPerformed
 
-    private void jButtonTipoSorveteCadastroListar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTipoSorveteCadastroListar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonTipoSorveteCadastroListar1ActionPerformed
+    private void jButtonNovoSorveteCadastroListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoSorveteCadastroListarActionPerformed
+        jInternalRelatorios.setVisible(true);
+        jTextArea1.setText(null);
+        for(int i = 0; i < ListaNovosSorvetes.size(); i++){
+            jTextArea1.append(ListaNovosSorvetes.get(i).print()+"\n");
+        } 
+        // RELATORIO NOVO SORVETE
+    }//GEN-LAST:event_jButtonNovoSorveteCadastroListarActionPerformed
 
-    private void jButton_Cadastar_Sorvete_Salvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Cadastar_Sorvete_Salvar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_Cadastar_Sorvete_Salvar1ActionPerformed
+    private void jButton_Cadastar_NovoSorvete_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Cadastar_NovoSorvete_SalvarActionPerformed
 
-    private void jButton_Cadastar_TipoSorvete_Cancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Cadastar_TipoSorvete_Cancelar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_Cadastar_TipoSorvete_Cancelar1ActionPerformed
+        Sorvete novoSorvete = new Sorvete(); 
+        novoSorvete.setItemName(jComboBoxTodosTipoSorvete.getSelectedItem().toString());
+        novoSorvete.setSorveteSabor(jComboBoxTodosSabores.getSelectedItem().toString());
+        novoSorvete.setPreco(ListaTipoSorvete.get(jComboBoxTodosTipoSorvete.getSelectedIndex()).getPreco());
+        ListaNovosSorvetes.add(novoSorvete);
+
+        
+        //CADASTRAR NOVO SORVETE
+    }//GEN-LAST:event_jButton_Cadastar_NovoSorvete_SalvarActionPerformed
+
+    private void jButton_Cadastar_NovoSorvete_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Cadastar_NovoSorvete_CancelarActionPerformed
+        
+        jInternalFrameCadastrarNovoSorvete.setVisible(false);
+        //BOTAO CANCELAR NOVO SORVETE
+    }//GEN-LAST:event_jButton_Cadastar_NovoSorvete_CancelarActionPerformed
 
     private void jComboBoxTodosTipoSorveteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTodosTipoSorveteActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jComboBoxTodosTipoSorveteActionPerformed
+
+    private void jMenuItemSorveteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSorveteActionPerformed
+        
+        jInternalFrameCadastrarNovoSorvete.setVisible(true);
+        //MENU NOVO SORVETE
+    }//GEN-LAST:event_jMenuItemSorveteActionPerformed
+
+    private void jComboBoxTodosSaboresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTodosSaboresActionPerformed
+
+    }//GEN-LAST:event_jComboBoxTodosSaboresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -778,24 +820,24 @@ public class CadastrosJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonItemCadastroListar;
+    private javax.swing.JButton jButtonNovoSorveteCadastroListar;
     private javax.swing.JButton jButtonSaborCadastroListar;
     private javax.swing.JButton jButtonTipoSorveteCadastroListar;
-    private javax.swing.JButton jButtonTipoSorveteCadastroListar1;
     private javax.swing.JButton jButton_Cadastar_Item_Cancelar;
     private javax.swing.JButton jButton_Cadastar_Item_Salvar;
+    private javax.swing.JButton jButton_Cadastar_NovoSorvete_Cancelar;
+    private javax.swing.JButton jButton_Cadastar_NovoSorvete_Salvar;
     private javax.swing.JButton jButton_Cadastar_Sabor_Cancelar;
     private javax.swing.JButton jButton_Cadastar_Sabor_Salvar;
     private javax.swing.JButton jButton_Cadastar_Sorvete_Salvar;
-    private javax.swing.JButton jButton_Cadastar_Sorvete_Salvar1;
     private javax.swing.JButton jButton_Cadastar_TipoSorvete_Cancelar;
-    private javax.swing.JButton jButton_Cadastar_TipoSorvete_Cancelar1;
     private javax.swing.JButton jButton_Relatorio_OK;
     private javax.swing.JComboBox jComboBoxTodosSabores;
     private javax.swing.JComboBox jComboBoxTodosTipoSorvete;
     private javax.swing.JInternalFrame jInternalFrameCadastrarItem;
     private javax.swing.JInternalFrame jInternalFrameCadastrarNovoSabor;
+    private javax.swing.JInternalFrame jInternalFrameCadastrarNovoSorvete;
     private javax.swing.JInternalFrame jInternalFrameCadastrarTipoSorvetes;
-    private javax.swing.JInternalFrame jInternalFrameCadastrarTipoSorvetes1;
     private javax.swing.JInternalFrame jInternalRelatorios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_Nome_Do_Produto;
