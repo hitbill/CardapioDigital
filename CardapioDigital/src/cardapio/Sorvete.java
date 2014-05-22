@@ -5,20 +5,18 @@
  */
 
 package cardapio;
+import java.util.ArrayList;
 
 /**
  *
  * @author Paulo
  */
-public class Cardapio {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-     //Cadastros janelaCadastro = new Cadastros();
-     //janelaCadastro.setVisible(true);
-        
-    }
+public class Sorvete extends Item{
+    private ArrayList<Sabor> listaSabor = new ArrayList();
     
+    public void addSabor(Sabor sabor){
+        listaSabor.add(sabor);
+    }
+
+ 
 }
